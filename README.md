@@ -72,7 +72,8 @@ fast-sync quickly to the current state of the network. To do so:
 $ geth console
 ```
 
-This command will:
+>This command will:
+
  * Start `geth` in snap sync mode (default, can be changed with the `--syncmode` flag),
    causing it to download more data in exchange for avoiding processing the entire history
    of the Ethereum network, which is very CPU intensive.
@@ -82,6 +83,8 @@ This command will:
    as well as `geth`'s own [management APIs](https://geth.ethereum.org/docs/rpc/server).
    This tool is optional and if you leave it out you can always attach to an already running
    `geth` instance with `geth attach`.
+   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   
 
 ### A Full node on the Görli test network
 
@@ -111,11 +114,16 @@ Specifying the `--goerli` flag, however, will reconfigure your `geth` instance a
    `geth attach <datadir>/goerli/geth.ipc`. Windows users are not affected by
    this.
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 *Note: Although there are some internal protective measures to prevent transactions from
 crossing over between the main network and test network, you should make sure to always
 use separate accounts for play-money and real-money. Unless you manually move
 accounts, `geth` will by default correctly separate the two networks and will not make any
 accounts available between them.*
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Full node on the Rinkeby test network
 
