@@ -130,9 +130,13 @@ accounts available between them.*
 Go Ethereum also supports connecting to the older proof-of-authority based test network
 called [*Rinkeby*](https://www.rinkeby.io) which is operated by members of the community.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ```shell
 $ geth --rinkeby console
 ```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Full node on the Ropsten test network
 
@@ -145,7 +149,11 @@ network's low difficulty/security.
 $ geth --ropsten console
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 *Note: Older Geth configurations store the Ropsten database in the `testnet` subdirectory.*
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Configuration
 
@@ -156,12 +164,16 @@ configuration file via:
 $ geth --config /path/to/your_config.toml
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 To get an idea how the file should look like you can use the `dumpconfig` subcommand to
 export your existing configuration:
 
 ```shell
 $ geth --your-favourite-flags dumpconfig
 ```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *Note: This works only with `geth` v1.6.0 and above.*
 
@@ -176,6 +188,8 @@ docker run -d --name ethereum-node -v /Users/alice/ethereum:/root \
            ethereum/client-go
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 This will start `geth` in fast-sync mode with a DB memory allowance of 1GB just as the
 above command does.  It will also create a persistent volume in your home directory for
 saving your blockchain as well as map the default ports. There is also an `alpine` tag
@@ -184,6 +198,8 @@ available for a slim version of the image.
 Do not forget `--http.addr 0.0.0.0`, if you want to access RPC from other containers
 and/or hosts. By default, `geth` binds to the local interface and RPC endpoints is not
 accessible from the outside.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Programmatically interfacing `geth` nodes
 
@@ -194,12 +210,17 @@ and [`geth` specific APIs](https://geth.ethereum.org/docs/rpc/server)).
 These can be exposed via HTTP, WebSockets and IPC (UNIX sockets on UNIX based
 platforms, and named pipes on Windows).
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 The IPC interface is enabled by default and exposes all the APIs supported by `geth`,
 whereas the HTTP and WS interfaces need to manually be enabled and only expose a
 subset of APIs due to security reasons. These can be turned on/off and configured as
 you'd expect.
 
-HTTP based JSON-RPC API options:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+>HTTP based JSON-RPC API options:
+
 
   * `--http` Enable the HTTP-RPC server
   * `--http.addr` HTTP-RPC server listening interface (default: `localhost`)
@@ -215,6 +236,8 @@ HTTP based JSON-RPC API options:
   * `--ipcapi` API's offered over the IPC-RPC interface (default: `admin,debug,eth,miner,net,personal,shh,txpool,web3`)
   * `--ipcpath` Filename for IPC socket/pipe within the datadir (explicit paths escape it)
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 You'll need to use your own programming environments' capabilities (libraries, tools, etc) to
 connect via HTTP, WS or IPC to a `geth` node configured with the above flags and you'll
 need to speak [JSON-RPC](https://www.jsonrpc.org/specification) on all transports. You
@@ -226,6 +249,8 @@ Ethereum nodes with exposed APIs! Further, all browser tabs can access locally
 running web servers, so malicious web pages could try to subvert locally available
 APIs!**
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Operating a private network
 
 Maintaining your own private network is more involved as a lot of configurations taken for
@@ -235,6 +260,7 @@ granted in the official networks need to be manually set up.
 
 First, you'll need to create the genesis state of your networks, which all nodes need to be
 aware of and agree upon. This consists of a small JSON file (e.g. call it `genesis.json`):
+
 
 ```json
 {
@@ -263,6 +289,8 @@ aware of and agree upon. This consists of a small JSON file (e.g. call it `genes
 }
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 The above fields should be fine for most purposes, although we'd recommend changing
 the `nonce` to some random value so you prevent unknown remote nodes from being able
 to connect to you. If you'd like to pre-fund some accounts for easier testing, create
@@ -279,6 +307,9 @@ the accounts and populate the `alloc` field with their addresses.
 }
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 With the genesis state defined in the above JSON file, you'll need to initialize **every**
 `geth` node with it prior to starting it up to ensure all blockchain parameters are correctly
 set:
@@ -286,6 +317,8 @@ set:
 ```shell
 $ geth init path/to/genesis.json
 ```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Creating the rendezvous point
 
@@ -298,13 +331,19 @@ $ bootnode --genkey=boot.key
 $ bootnode --nodekey=boot.key
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 With the bootnode online, it will display an [`enode` URL](https://eth.wiki/en/fundamentals/enode-url-format)
 that other nodes can use to connect to it and exchange peer information. Make sure to
 replace the displayed IP address information (most probably `[::]`) with your externally
 accessible IP to get the actual `enode` URL.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 *Note: You could also use a full-fledged `geth` node as a bootnode, but it's the less
 recommended way.*
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Starting up your member nodes
 
@@ -318,8 +357,12 @@ do also specify a custom `--datadir` flag.
 $ geth --datadir=path/to/custom/data/folder --bootnodes=<bootnode-enode-url-from-above>
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 *Note: Since your network will be completely cut off from the main and test networks, you'll
 also need to configure a miner to process transactions and create new blocks for you.*
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Running a private miner
 
@@ -338,10 +381,14 @@ by:
 $ geth <usual-flags> --mine --miner.threads=1 --miner.etherbase=0x0000000000000000000000000000000000000000
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Which will start mining blocks and transactions on a single CPU thread, crediting all
 proceedings to the account specified by `--miner.etherbase`. You can further tune the mining
 by changing the default gas limit blocks converge to (`--miner.targetgaslimit`) and the price
 transactions are accepted at (`--miner.gasprice`).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Contribution
 
@@ -355,7 +402,10 @@ to ensure those changes are in line with the general philosophy of the project a
 some early feedback which can make both your efforts much lighter as well as our review
 and merge procedures quick and simple.
 
-Please make sure your contributions adhere to our coding guidelines:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+>Please make sure your contributions adhere to our coding guidelines:
+
 
  * Code must adhere to the official Go [formatting](https://golang.org/doc/effective_go.html#formatting)
    guidelines (i.e. uses [gofmt](https://golang.org/cmd/gofmt/)).
@@ -369,6 +419,8 @@ Please see the [Developers' Guide](https://geth.ethereum.org/docs/developers/dev
 for more details on configuring your environment, managing project dependencies, and
 testing procedures.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## License
 
 The go-ethereum library (i.e. all code outside of the `cmd` directory) is licensed under the
@@ -378,3 +430,7 @@ also included in our repository in the `COPYING.LESSER` file.
 The go-ethereum binaries (i.e. all code inside of the `cmd` directory) is licensed under the
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html), also
 included in our repository in the `COPYING` file.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
