@@ -32,7 +32,7 @@ well as our review and merge procedures quick and simple.
  * Pull requests need to be based on and opened against the `master` branch.
  * Commit messages should be prefixed with the package(s) they modify.
    * E.g. "eth, rpc: make trace configs optional"
-  
+   
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
