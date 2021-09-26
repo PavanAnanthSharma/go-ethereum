@@ -15,6 +15,7 @@ In the LES protocol, there is an important concept called checkpoint. In simple 
 * Canonical hash trie root at checkpoint
 * Bloom trie root at checkpoint
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 *For a more detailed introduction to checkpoint, please see the LES [spec](https://github.com/ethereum/devp2p/blob/master/caps/les.md).*
@@ -23,9 +24,13 @@ Using this information, light clients can skip all historical block headers when
 
 However, from a security perspective, the most critical step in a synchronization algorithm based on checkpoints is to determine whether the checkpoint used by the light client is correct. Otherwise, all blockchain data synchronized based on this checkpoint may be wrong. For this we provide two different ways to ensure the correctness of the checkpoint used by the light client.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### Hardcoded checkpoint
 
 There are several hardcoded checkpoints in the [source code](https://github.com/ethereum/go-ethereum/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Checkpoint oracle
 
