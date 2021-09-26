@@ -26,19 +26,21 @@ However, from a security perspective, the most critical step in a synchronizatio
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Hardcoded checkpoint
+>Hardcoded checkpoint
 
 There are several hardcoded checkpoints in the [source code](https://github.com/ethereum/go-ethereum/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Checkpoint oracle
+>Checkpoint oracle
 
 Hardcoded checkpoints can solve the problem of verifying the correctness of checkpoints (although this is a more centralized solution). But the pain point of this solution is that developers can only update checkpoints when a new version of software is released. In addition, light client users usually do not keep the Geth version they use always up to date. So hardcoded checkpoints used by users are generally stale. Therefore, it still needs to download a large amount of blockchain data during synchronization.
 
 Checkpoint oracle is a more flexible solution. In simple terms, this is a smart contract that is deployed on the blockchain. The smart contract records several designated trusted signers. Whenever enough trusted signers have issued their signatures for the same checkpoint, it can be considered that the checkpoint has been authenticated by the signers. Checkpoints authenticated by trusted signers can be considered correct.
 
 So this way, even without updating the software version, as long as the trusted signers regularly update the checkpoint in oracle on time, the light client can always use the latest and verified checkpoint for data synchronization.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Usage
 
