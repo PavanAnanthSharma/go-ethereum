@@ -19,7 +19,7 @@ well as our review and merge procedures quick and simple.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Coding guidelines
+## Coding guidelines 
 
 >Please make sure your contributions adhere to our coding guidelines:
 
