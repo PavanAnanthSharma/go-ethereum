@@ -22,4 +22,6 @@ p2p/protocols                   @fjl
 p2p/testing                     @fjl
 signer/                         @holiman
 zero-knowledge-proof            @PavanAnanthSharma
+Merkle-Tree                     @PavanAnanthSharma
+
 
