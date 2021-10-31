@@ -50,6 +50,6 @@ and help.
 
 Please see the [Developers' Guide](https://geth.ethereum.org/docs/developers/devguide)
 for more details on configuring your environment, managing project dependencies
-and testing procedures.
+and testing procedures. 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
