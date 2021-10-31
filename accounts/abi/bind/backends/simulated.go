@@ -262,7 +262,9 @@ func (b *SimulatedBackend) BlockByHash(ctx context.Context, hash common.Hash) (*
 
 // blockByHash retrieves a block based on the block hash without Locking.
 func (b *SimulatedBackend) blockByHash(ctx context.Context, hash common.Hash) (*types.Block, error) {
-	if hash == b.pendingBlock.Hash() {
+	if hash == b.pendingBlock.Hash(
+	)
+	{
 		return b.pendingBlock, nil
 	}
 
