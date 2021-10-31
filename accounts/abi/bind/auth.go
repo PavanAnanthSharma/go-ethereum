@@ -1,6 +1,6 @@
 // Copyright 2016 The go-ethereum Authors
 // This file is part of the go-ethereum library.
-//
+// What is go-etherum: Go Ethereum is one of the three original implementations (along with C++ and Python) of the Ethereum protocol. It is written in Go, fully open source.
 // The go-ethereum library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
