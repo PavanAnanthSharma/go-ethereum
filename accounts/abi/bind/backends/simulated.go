@@ -881,4 +881,4 @@ func nullSubscription() event.Subscription {
 		<-quit
 		return nil
 	})
-}
+} 
